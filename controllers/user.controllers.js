@@ -109,9 +109,6 @@ export const updateUser = async (req, res, next) => {
 };
 
 export const deleteUser = async (req, res, next) => {
-  if (req.user.id !== req.params.id)
-    return next(errorHandler(400, "You can delete only your profile"));
-
   try {
     await User.findByIdAndDelete(req.params.id);
 
